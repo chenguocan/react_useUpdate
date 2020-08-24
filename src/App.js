@@ -1,26 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import useUpdate from "./useUpdate"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = (props) => {
+    return (<Child></Child>)
 }
 
+const Child = (props) => {
+    const [n, setN] = React.useState(0);
+    useUpdate(() => {
+        console.log("变了")
+    }, n)
+
+    return (
+        <div>Child{n}
+            <button onClick={() => {
+                setN(n + 1)
+            }}>+1
+            </button>
+        </div>
+    )
+}
 export default App;
